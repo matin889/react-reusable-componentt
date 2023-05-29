@@ -1,35 +1,48 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useState } from "react";
+import Button from "./Components/Button";
+import Footer from "./Components/Footer";
+import Gallery from "./Components/Gallery";
+import Navbar from "./Components/Navbar";
 
-function App() {
-  const [count, setCount] = useState(0)
-
+const App = () => {
+  const [isOpen, setIsOpen] = useState(false);
+  function handleOpen() {
+    setIsOpen(true);
+  }
   return (
     <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
-}
+      <Navbar
+        navlink1="#"
+        navlink2="#"
+        navlink3="#"
+        navlink4="#"
+        nav1="Home"
+        nav2="CV"
+        nav3="Protfolio"
+        nav4="Gallery"
+      />
 
-export default App
+      <Gallery
+        image1="./images/img2.jpg"
+        image2="./images/img3.jpg"
+        image3="./images/img4.jpg"
+        image4="./images/img5.jpg"
+        image5="./images/img6.jpg"
+        image6="./images/img7.jpg"
+      />
+      <Button onClick={handleOpen}>Open</Button>
+      {isOpen && (
+        <div>
+          <h2>Test</h2>
+        </div>
+      )}
+      <Footer
+        about="Stockholm, Sweden"
+        mobile="+46707132419"
+        email="matinpcc@yahoo.com"
+      />
+    </>
+  );
+};
+
+export default App;
